@@ -1,0 +1,127 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %} <title>Shop</title> {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Search Results for {{ query }}</h2>
+    <div class="row">
+        {% if products %}
+            {% for product in products %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="featured__item">
+                        <div class="featured__item__pic set-bg" data-setbg="{{ product.image.url }}">
+                            <ul class="featured__item__pic__hover">
+                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                <li><a href="{% url 'shop_detail' product.id %}"><i class="fa fa-retweet"></i></a></li>
+                                <li><a href="#" id="add_to_cart" data-id="{{ product.id }}"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="featured__item__text">
+                            <h6><a href="#">{{ product.title }}</a></h6>
+                            <h5>{{ product.price }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No products found.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- <script>
+    $(document).ready(function() {
+    $('#add_to_cart').on('click', function() {
+        let product_id = $(this).data('id');
+
+        $.ajax({
+            url: "/add_to_cart/",
+            data: {
+                'id': product_id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    Swal.fire({
+                        title: 'Added to Cart!',
+                        text: 'Product added to cart successfully.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                    $('.cart-items-count').text(response.totalcartItem);
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'There was an error adding the product to the cart.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an error adding the product to the cart.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    });
+});
+</script> -->
+
+<!-- <script>
+
+$(document).ready(function() {
+    // Event delegation to handle dynamic elements
+    $(document).on('click', '#add_to_cart', function(event) {
+        event.preventDefault();
+
+        let product_id = $(this).data('id');
+        let this_val = $(this);
+
+        $.ajax({
+            url: "/add_to_cart/",
+            data: {
+                'id': product_id
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.success) {
+                    Swal.fire({
+                        title: 'Added to Cart!',
+                        text: 'Product added to cart successfully.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    });
+                    $('.cart-items-count').text(response.totalcartItem);
+                } else {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'There was an error adding the product to the cart.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'There was an error adding the product to the cart.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
+    });
+});
+
+
+</script> -->
+
+
+
+{% endblock %}

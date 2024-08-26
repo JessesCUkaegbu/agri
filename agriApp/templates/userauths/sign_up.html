@@ -1,0 +1,84 @@
+{% extends 'partials/base.html' %} {% load static %} {% block title %}
+{% load socialaccount %}
+<title>Shop</title> {% endblock %} {% block content %}
+
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+          <h2 class="heading-section">You are welcome to our Agriculture market</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5">
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-4">Sign In</h3>
+              </div>
+              <div class="w-100">
+                <p class="social-media d-flex justify-content-end">
+                  <a
+                    href="#"
+                    class="social-icon d-flex align-items-center justify-content-center"
+                    ><span class="fa fa-facebook"></span
+                  ></a>
+                  <a
+                    href="#"
+                    class="social-icon d-flex align-items-center justify-content-center"
+                    ><span class="fa fa-google"></span
+                  ></a>
+                </p>
+              </div>
+            </div>
+            <form action="{% url 'sign_up' %}" method="POST" class="signup-form hidden">
+                {% csrf_token %}
+                <div class="form-group">
+                  <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-user"></span>
+                  </div>
+                  <input type="text" name="username" class="form-control rounded-left" placeholder="Username" required />
+                </div>
+                <div class="form-group">
+                  <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-envelope"></span>
+                  </div>
+                  <input type="email" name="email" class="form-control rounded-left" placeholder="Email" required />
+                </div>
+                <div class="form-group">
+                  <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-lock"></span>
+                  </div>
+                  <input type="password" name="password" class="form-control rounded-left" placeholder="Password" required />
+                </div>
+                <div class="form-group d-flex align-items-center mt-5">
+                  <div class="w-100 d-flex justify-content-start">
+                      <button type="submit" class="btn btn-primary rounded submit">Sign Up</button>
+                    </div>
+                  <div class="w-100">
+                    <label class="checkbox-wrap checkbox-primary mb-0">Save Password
+                      <input type="checkbox" checked />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </form>
+              <div class="form-group mt-4">
+                <div class="w-100 text-center">
+                  <p class="mb-1">Already have an account? <a class="ml-5" href="{% url 'login' %}">Login</a></p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+</div>
+
+
+
+
+
+
+{% endblock %}
