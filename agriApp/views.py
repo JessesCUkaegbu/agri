@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from . models import *
 from django.db.models import Max, Min
 from django.http import JsonResponse
@@ -75,6 +76,7 @@ def shop_detail(request, id):
   }
   return render(request, 'shop_detail.html', context)
 
+@login_required
 def shopcart(request):
     total_cost = 0
     cart_data = request.session.get('cart_data_obj', {})
@@ -225,6 +227,7 @@ def blog_detail(request):
 
  return render(request, 'blog_detail.html')
 
+@login_required
 def checkout(request):
     cart = Cart(request)
     context = {
@@ -295,7 +298,7 @@ def product_search(request):
 
     return render(request, 'product_search.html', {'products': products, 'query': query})
 
-
+@login_required
 def process_order(request):
     if request.method == 'POST':
         cart = Cart(request)
