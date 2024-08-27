@@ -33,8 +33,12 @@ SECRET_KEY = 'django-insecure-m!w16w10q++r5ek4)6*fjhzc5z18xv0l$%1vcml%*@m7vb)0p-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.agri-production-e6ef.up.railway.app']
+ALLOWED_HOSTS = ['agri-production-e6ef.up.railway.app']
 
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://agri-production-e6ef.up.railway.app',
+]
 
 # Application definition
 SITE_ID = 1
@@ -170,9 +174,9 @@ JAZZMIN_SETTINGS = {
 CART_SESSION_ID = 'cart'
 
 # Security settings
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
