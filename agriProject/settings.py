@@ -183,11 +183,14 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-LOGIN_REDIRECT_URL = '/'
+
+LOGIN_URL = '/login/'
+
+# LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 
-LOGIN_URL = '/login/'
+
 
 # CLAINT_ID = '374743662621'
 # KEY = "GOCSPX"
