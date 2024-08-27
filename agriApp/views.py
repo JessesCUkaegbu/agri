@@ -76,7 +76,7 @@ def shop_detail(request, id):
   }
   return render(request, 'shop_detail.html', context)
 
-@login_required
+
 def shopcart(request):
     total_cost = 0
     cart_data = request.session.get('cart_data_obj', {})
