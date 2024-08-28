@@ -71,16 +71,16 @@ def user_login(request):
     return render(request, "userauths/login.html", {'no_header': True})
 
 
-# def logout_view(request):
-#     logout(request)
-#     messages.success(request, "You have successfully logout")
-#     return redirect("login")
-
 def logout_view(request):
-    auth_logout(request)
-    for key in list(request.session.keys()):
-        del request.session[key]
-    return redirect('login') 
+    logout(request)
+    messages.success(request, "You have successfully logout")
+    return redirect("login")
 
-class MyGoogleLoginView(OAuth2LoginView):
-    adapter_class = MyGoogleOAuth2Adapter
+# def logout_view(request):
+#     auth_logout(request)
+#     for key in list(request.session.keys()):
+#         del request.session[key]
+#     return redirect('login') 
+
+# class MyGoogleLoginView(OAuth2LoginView):
+#     adapter_class = MyGoogleOAuth2Adapter
