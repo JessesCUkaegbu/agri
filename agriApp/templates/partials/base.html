@@ -115,9 +115,9 @@
             <div class="humberger__menu__cart">
                 <ul>
                     <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                    <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                    <li><a href="{% url 'shopcart' %}"><i class="fa fa-shopping-bag"></i><span class="cart-items-count">{{ request.session.cart_data_obj|length }}</span></a></li>
                 </ul>
-                <div class="header__cart__price">item: <span>$150.00</span></div>
+                <div class="header__cart__price">Item: <span>${{ cart_total_cost|floatformat:2 }}</span></div>
             </div>
             <div class="humberger__menu__widget">
                 <div class="header__top__right__language">
@@ -137,8 +137,8 @@
                 <ul>
                     <li class="active"><a href="{% url 'index' %}">Home</a></li>
                     <li><a href="{% url 'shop' %}">Shop</a></li>
-                    <li><a href="./blog.html">Blog</a></li>
-                    <li><a href="./contact.html">Contact</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
             </nav>
             <div id="mobile-menu-wrap"></div>
