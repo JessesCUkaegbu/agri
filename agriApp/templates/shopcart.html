@@ -92,7 +92,7 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                        <li>Subtotal<span>${{ total_cost }}</span></li>
+                        <li>Subtotal<span>{{ total_cost|floatformat:2 }}</span></li>
                         <li>Total:<span> <span id="total-cost">${{ total_cost|floatformat:2 }}</span></li>
                     </ul>
                     <a href="{% url 'checkout' %}" class="primary-btn">PROCEED TO CHECKOUT</a>
