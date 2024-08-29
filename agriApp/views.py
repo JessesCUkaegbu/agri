@@ -227,7 +227,7 @@ def blog_detail(request):
 
  return render(request, 'blog_detail.html')
 
-@login_required()
+@login_required
 def checkout(request):
     cart = Cart(request)
     context = {
@@ -298,7 +298,7 @@ def product_search(request):
 
     return render(request, 'product_search.html', {'products': products, 'query': query})
 
-@login_required()
+@login_required
 def process_order(request):
     if request.method == 'POST':
         cart = Cart(request)
